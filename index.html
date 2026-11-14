@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Derzk1yWorld — Донат</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Manrope:wght@400;600;800&display=swap">
+<style>
+:root{
+  --bg:#000;--panel:#120a04;--line:#3a1f08;--orange:#ff7a00;--orange-hi:#ffa233;--text:#f4ece4;--muted:#a58d78;
+  color-scheme:dark;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Manrope',system-ui,sans-serif;line-height:1.55;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;background-position:-1px -1px}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,122,0,.28),transparent 60%),linear-gradient(transparent 55%,#000 100%);pointer-events:none;z-index:0}
+main{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 20px 64px}
+.pix{font-family:'Press Start 2P','Courier New',monospace;font-weight:400}
+header{padding:72px 0 48px}
+.logo{font-size:clamp(26px,6.4vw,56px);line-height:1.25;margin:0;color:var(--text);text-shadow:4px 4px 0 var(--orange),8px 8px 0 #7a3a00;word-break:break-word}
+.logo span{color:var(--orange)}
+.lead{max-width:46ch;margin:40px 0 0;color:var(--muted);font-size:18px}
+h2{font-size:15px;line-height:1.6;margin:0 0 24px;color:var(--orange)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.tier{position:relative;background:var(--panel);border:3px solid var(--line);padding:22px 18px 18px;display:flex;flex-direction:column;gap:18px;box-shadow:6px 6px 0 #000}
+.tier:hover{border-color:var(--orange)}
+.tier.top{border-color:var(--orange);background:#1c0d03}
+.tier.top::after{content:"Максимум";position:absolute;top:-13px;right:12px;background:var(--orange);color:#000;font:700 12px 'Manrope',sans-serif;padding:3px 9px}
+.name{font-size:14px;margin:0;text-transform:none;word-break:break-word}
+.blocks{display:flex;gap:5px}
+.blocks i{width:18px;height:18px;background:var(--line)}
+.blocks i.on{background:var(--orange);box-shadow:inset -3px -3px 0 #b34f00,inset 3px 3px 0 var(--orange-hi)}
+.price{font-size:26px;font-weight:800;margin:auto 0 0}
+.price small{font-size:15px;color:var(--muted);font-weight:600;margin-left:2px}
+button{font:inherit;cursor:pointer}
+.buy{background:var(--orange);color:#000;border:0;padding:12px 14px;font-weight:800;font-size:15px;box-shadow:inset -4px -4px 0 #b34f00,inset 4px 4px 0 var(--orange-hi)}
+.buy:hover{background:var(--orange-hi)}
+.buy:active{transform:translateY(2px)}
+a.buy{display:inline-block;text-decoration:none;text-align:center}
+:focus-visible{outline:3px solid var(--orange-hi);outline-offset:3px}
+.how{margin-top:56px;border-left:4px solid var(--orange);padding:4px 0 4px 18px;max-width:60ch;color:var(--muted)}
+.how p{margin:6px 0}
+.how b{color:var(--text)}
+footer{margin-top:56px;color:var(--muted);font-size:14px}
+dialog{background:var(--panel);color:var(--text);border:3px solid var(--orange);padding:26px;width:min(420px,calc(100vw - 32px));box-shadow:8px 8px 0 #000}
+dialog::backdrop{background:rgba(0,0,0,.8)}
+dialog h3{margin:0 0 6px;font-size:13px;line-height:1.6;color:var(--orange)}
+dialog p{margin:0 0 16px;color:var(--muted)}
+label{display:block;font-weight:600;margin-bottom:6px}
+input{width:100%;background:#000;color:var(--text);border:3px solid var(--line);padding:12px;font:inherit;font-size:16px}
+input:focus{border-color:var(--orange);outline:none}
+.err{color:#ff6b4a;font-size:14px;min-height:20px;margin:6px 0 10px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.ghost{background:transparent;color:var(--text);border:3px solid var(--line);padding:10px 14px;font-weight:600}
+.ghost:hover{border-color:var(--orange)}
+.order{background:#000;border:3px dashed var(--line);padding:12px;margin:0 0 14px;white-space:pre-wrap;word-break:break-word}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:no-preference){.logo{animation:glow 3s ease-in-out infinite alternate}}
+@keyframes glow{from{text-shadow:4px 4px 0 var(--orange),8px 8px 0 #7a3a00}to{text-shadow:4px 4px 0 var(--orange-hi),8px 8px 0 #7a3a00,0 0 28px rgba(255,122,0,.55)}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1 class="logo pix">Derzk1y<span>World</span></h1>
+  <p class="lead">Поддержи сервер и получи донат-статус. Выбери набор, введи свой ник и оформи заказ.</p>
+</header>
+
+<section>
+  <h2 class="pix">Донаты</h2>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="how">
+  <p><b>Как купить.</b> Нажми «Купить», введи ник из игры и скопируй заказ. Затем оплати на DonationAlerts: сумму указываешь по цене доната, а заказ вставляешь в сообщение.</p>
+</section>
+
+<footer>© Derzk1yWorld · Minecraft-сервер</footer>
+</main>
+
+<dialog id="dlg">
+  <h3 class="pix" id="dTitle"></h3>
+  <p id="dSub"></p>
+  <div id="step1">
+    <label for="nick">Ник в Minecraft</label>
+    <input id="nick" maxlength="16" autocomplete="off" spellcheck="false" placeholder="Например, Steve123">
+    <div class="err" id="err" role="alert"></div>
+    <div class="row">
+      <button class="buy" id="go" type="button">Оформить заказ</button>
+      <button class="ghost" type="button" data-close>Отмена</button>
+    </div>
+  </div>
+  <div id="step2" hidden>
+    <p>Скопируй заказ, оплати на DonationAlerts и вставь заказ в сообщение к донату.</p>
+    <div class="order" id="order"></div>
+    <div class="row">
+      <a class="buy" href="https://dalink.to/kir4er" target="_blank" rel="noopener">Оплатить в DonationAlerts</a>
+      <button class="ghost" id="copy" type="button">Скопировать заказ</button>
+      <button class="ghost" type="button" data-close>Закрыть</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+var TIERS=[
+  {name:"steve",price:19},
+  {name:"chest",price:29},
+  {name:"super",price:49},
+  {name:"support",price:99},
+  {name:"sponsor",price:149}
+];
+var grid=document.getElementById('grid'),dlg=document.getElementById('dlg'),cur=null;
+TIERS.forEach(function(t,i){
+  var d=document.createElement('article');
+  d.className='tier'+(i===TIERS.length-1?' top':'');
+  var b='';for(var k=0;k<5;k++)b+='<i'+(k<=i?' class="on"':'')+'></i>';
+  d.innerHTML='<h3 class="name pix">'+t.name+'</h3><div class="blocks" aria-hidden="true">'+b+'</div>'+
+    '<p class="price">'+t.price+'<small>₽</small></p><button class="buy" type="button">Купить</button>';
+  d.querySelector('button').addEventListener('click',function(){open(t)});
+  grid.appendChild(d);
+});
+function open(t){
+  cur=t;
+  document.getElementById('dTitle').textContent=t.name;
+  document.getElementById('dSub').textContent='Стоимость: '+t.price+' ₽';
+  document.getElementById('step1').hidden=false;
+  document.getElementById('step2').hidden=true;
+  document.getElementById('err').textContent='';
+  document.getElementById('nick').value='';
+  dlg.showModal();
+  document.getElementById('nick').focus();
+}
+document.getElementById('go').addEventListener('click',function(){
+  var n=document.getElementById('nick').value.trim();
+  if(!/^[A-Za-z0-9_]{3,16}$/.test(n)){document.getElementById('err').textContent='Ник: 3–16 символов, только латиница, цифры и _';return}
+  document.getElementById('order').textContent='Сервер: Derzk1yWorld\nНик: '+n+'\nДонат: '+cur.name+' — '+cur.price+' ₽';
+  document.getElementById('step1').hidden=true;
+  document.getElementById('step2').hidden=false;
+});
+document.getElementById('nick').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('go').click()});
+document.getElementById('copy').addEventListener('click',function(){
+  var txt=document.getElementById('order').textContent,btn=this;
+  function done(){btn.textContent='Скопировано'}
+  try{navigator.clipboard.writeText(txt).then(done,function(){btn.textContent='Выдели текст и скопируй'})}catch(e){btn.textContent='Выдели текст и скопируй'}
+});
+dlg.addEventListener('click',function(e){if(e.target===dlg||e.target.hasAttribute('data-close'))dlg.close()});
+</script>
+</body>
+</html>
